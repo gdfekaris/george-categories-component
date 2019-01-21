@@ -4,46 +4,47 @@ import RecentHighlights from './RecentHighlights.jsx';
 import PopularClips from './PopularClips.jsx';
 import AllVideos from './AllVideos.jsx';
 import { Switch, HashRouter, Route } from 'react-router-dom';
+const gameData = require('../../database/gameData.js');
 
 export default class Categorized_Lists extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allVideos: null,
-      recentBroadcasts: null,
-      recentHighlights: null,
-      popularClips: null,
+      allVideos: gameData.allVideos,
+      recentBroadcasts: gameData.videos,
+      recentHighlights: gameData.videos,
+      popularClips: gameData.clips,
     }
   };
 
-  componentDidMount() {
-    let allVideos = {};
-    fetch('/recent-broadcasts')
-      .then(response => response.json())
-      .then((data) => {
-        allVideos.recentBroadcasts = data;
-        return fetch('/recent-highlights');
-      })
-      .then(response => response.json())
-      .then((data) => {
-        allVideos.recentHighlights = data;
-        return fetch('/popular-clips');
-      })
-      .then(response => response.json())
-      .then((data) => {
-        allVideos.popularClips = data;
-        return allVideos;
-      })
-      .then((allVideos) => {
-        let all = allVideos.recentBroadcasts.concat(allVideos.recentHighlights, allVideos.popularClips);
-        this.setState({
-          allVideos: all,
-          recentBroadcasts: allVideos.recentBroadcasts,
-          recentHighlights: allVideos.recentHighlights,
-          popularClips: allVideos.popularClips
-        });
-      });
-  };
+  // componentDidMount() {
+  //   let allVideos = {};
+  //   fetch('/recent-broadcasts')
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       allVideos.recentBroadcasts = data;
+  //       return fetch('/recent-highlights');
+  //     })
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       allVideos.recentHighlights = data;
+  //       return fetch('/popular-clips');
+  //     })
+  //     .then(response => response.json())
+  //     .then((data) => {
+  //       allVideos.popularClips = data;
+  //       return allVideos;
+  //     })
+  //     .then((allVideos) => {
+  //       let all = allVideos.recentBroadcasts.concat(allVideos.recentHighlights, allVideos.popularClips);
+  //       this.setState({
+  //         allVideos: all,
+  //         recentBroadcasts: allVideos.recentBroadcasts,
+  //         recentHighlights: allVideos.recentHighlights,
+  //         popularClips: allVideos.popularClips
+  //       });
+  //     });
+  // };
 
   render() {
     if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
