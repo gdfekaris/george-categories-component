@@ -3,11 +3,13 @@
 # node stuff
 node_modules
 .gitignore
+notes.js
 
 # webpack stuff
+webpack.config.js
 
 # testing
-coverage
+coverage/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
