@@ -11,9 +11,9 @@ export default class Categorized_Lists extends React.Component {
     super(props);
     this.state = {
       allVideos: gameData.allVideos,
-      recentBroadcasts: gameData.videos,
-      recentHighlights: gameData.videos,
-      popularClips: gameData.clips,
+      recentBroadcasts: gameData.recentBroadcasts,
+      recentHighlights: gameData.recentHighlights,
+      popularClips: gameData.popularClips,
     }
   };
 
@@ -47,9 +47,9 @@ export default class Categorized_Lists extends React.Component {
   // };
 
   render() {
-    if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
-      return (<div data-testid="loading-div">Loading ...</div>);
-    } else {
+    // if (this.state.recentBroadcasts === null || this.state.recentHighlights === null || this.state.popularClips === null) {
+    //   return (<div data-testid="loading-div">Loading ...</div>);
+    // } else {
       return (
         <HashRouter>
           <Switch>
@@ -72,6 +72,6 @@ export default class Categorized_Lists extends React.Component {
           </Switch>
         </HashRouter>
       );
-    }
+    //}
   };
 };
