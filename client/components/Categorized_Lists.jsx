@@ -69,6 +69,14 @@ export default class Categorized_Lists extends React.Component {
                 <AllVideos videos={this.state.allVideos} />
               </div>
             )} />
+            <Route path="/videos/:videoId" render={() => (
+              <div data-testid="main-container">
+                <RecentBroadcasts videos={this.state.recentBroadcasts} />
+                <RecentHighlights videos={this.state.recentHighlights} />
+                <PopularClips videos={this.state.popularClips} />
+                <AllVideos videos={this.state.allVideos} />
+              </div>
+            )} />
           </Switch>
         </HashRouter>
       );
